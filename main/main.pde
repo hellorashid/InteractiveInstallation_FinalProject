@@ -87,10 +87,11 @@ void draw(){
     if (totalPixels > 500) { 
       fill(255, 0, 88);
       ellipse(xPosition, yPosition, 22, 22); 
+      ps.addParticle();
     }; 
     text(avgY, 500,500);
     
-   ps.addParticle();
+  
    ps.run();
     
  }
