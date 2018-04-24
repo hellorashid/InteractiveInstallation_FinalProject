@@ -39,7 +39,7 @@ class Brush {
      xPosition = x; 
      yPosition = y; 
      vel = 3; 
-     accel = 0; 
+     accel = 1; 
   } 
   
   void run() { 
