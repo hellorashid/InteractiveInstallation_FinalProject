@@ -22,7 +22,7 @@ void setup() {
   frameRate = 60;
   size (displayWidth,displayHeight);
   kinect2 = new Kinect2(this);
-  background(0);
+  background(255);
   
   
   
@@ -81,7 +81,7 @@ void draw(){
       
     
     img.updatePixels();
-    image(img,0,0, width, height);
+    //image(img,0,0, width, height);
     float avgX = sumX / totalPixels;
     float avgY = sumY /totalPixels;
  

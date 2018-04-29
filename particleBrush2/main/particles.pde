@@ -98,14 +98,14 @@ class Ptc {
 
   void drawPtc() {
     strokeWeight(weight);
-    stroke(#E82C0C, 255);
+    stroke(#2593FF, 255);
     if(onPressed)line(pos.x, pos.y, pPos.x, pPos.y);
     else point(pos.x, pos.y);
   }
   
   void drawCnt(Ptc coPtc, float scalar) {
     strokeWeight((weight+coPtc.weight)*.5*scalar);
-    stroke(#E82C0C, 255*scalar);
+    stroke(#E82C0C, 255);
     line(pos.x, pos.y, coPtc.pos.x, coPtc.pos.y);
   }
 
