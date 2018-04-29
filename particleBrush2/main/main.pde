@@ -45,7 +45,7 @@ void setup() {
 
 void draw(){
   println(frameRate);
-  //background(#7F0037);
+  background(#7F0037);
  
   onPressed = true;
 

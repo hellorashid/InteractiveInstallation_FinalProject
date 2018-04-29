@@ -75,7 +75,7 @@ void draw(){
       
     
     img.updatePixels();
-    image(img,0,0, width, height);
+    //image(img,0,0, width, height);
     float avgX = sumX / totalPixels;
     float avgY = sumY /totalPixels;
  
