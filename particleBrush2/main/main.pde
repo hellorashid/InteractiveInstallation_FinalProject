@@ -1,6 +1,9 @@
 
 import org.openkinect.processing.*;
 
+PImage crosshair; 
+
+
 //Colors
 
 color backgroundColor = color(14,7,33); 
@@ -16,13 +19,14 @@ PImage img;
 float xPosition = 0; 
 float yPosition = 0; 
 
-int particleSize = 22;
+int particleSize = 32;
 
 void setup() {
   frameRate = 60;
-  size (displayWidth,displayHeight);
+  fullScreen();
+
   kinect2 = new Kinect2(this);
-  background(255);
+  
   
   
   
@@ -31,22 +35,35 @@ void setup() {
   img = createImage(kinect2.depthWidth, kinect2.depthHeight,HSB);
 
   
-   
-  frameRate(30);
-  smooth();
+  background(255);
+  frameRate(60);
+
   textSize(15);
   
   initPtcs(60);
   initSliders();
- 
   
+  
+ //crosshair = createGraphics(width, height); 
+  crosshair = loadImage("crosshair.png"); 
+ // crosshair.beginDraw(); 
+ //   //background(255, 0); 
+ //   pushMatrix(); 
+ //   fill(255, 0, 88);
+ //   noStroke();
+ //   ellipse(0, 0, 30, 30); 
+ //   popMatrix(); 
+ // crosshair.endDraw(); 
+
   
 }
 
 void draw(){
+  
+  
   println(frameRate);
-  background(#7F0037);
- 
+  //background(#7F0037);
+   //background(255); 
   onPressed = true;
 
   int[] depth = kinect2.getRawDepth();
@@ -91,17 +108,13 @@ void draw(){
  
     
     
-    if (totalPixels > 500) { 
-      fill(255, 0, 88);
-      ellipse(xPosition, yPosition, 22, 22); 
-    }; 
-    text(avgY, 500,500);
+  
     
   
  
    
    
-  gThres = lerp(gThres, gThresT, .02);
+  gThres = lerp(gThres, gThresT, 0.001);
   //gBgAlpha = lerp(gBgAlpha, gBgAlphaT, .02);
   //gBgAlpha = 1; 
   gMag = sliderForce.value;
@@ -116,5 +129,34 @@ void draw(){
   drawPtcs();
   drawCnts();
   //drawSliders();
+  
+ 
+ 
+ //   if (totalPixels > 500) { 
+ //     pushMatrix(); 
+ //       image(crosshair, xPosition, yPosition); 
+ //      popMatrix(); 
+
+ //   }; 
+    
+    
+    //for when user is not their 
+    if (totalPixels < 500) { 
+      
+      //saveFrame();
+      takePic(); 
+     
+    }; 
+    text(avgY, 500,500);
     
  }
+ 
+boolean pictureTaken = false; 
+ void takePic() { 
+   if (pictureTaken == false) { 
+   saveFrame(); 
+     pictureTaken = true; 
+   } 
+   
+ };  
+ 

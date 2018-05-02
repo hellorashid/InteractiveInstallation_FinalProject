@@ -58,8 +58,8 @@ class Ptc {
     vel = new PVector(0, 0);
     acc = new PVector(0, 0);
 
-    weight = random(1, 10);
-    decay = map(weight, 1, 10, .95, .85);
+    weight = random(1, 5);
+    decay = map(weight, 1, 5, .95, .85);
     magScalar = map(weight, 1, 10, .5, .05);
   }
 
@@ -97,15 +97,19 @@ class Ptc {
   }
 
   void drawPtc() {
-    strokeWeight(weight);
-    stroke(#2593FF, 255);
+    //strokeWeight(weight);
+     strokeWeight(random(3));
+     //color for lines
+    stroke(#008080,255);
     if(onPressed)line(pos.x, pos.y, pPos.x, pPos.y);
     else point(pos.x, pos.y);
   }
   
   void drawCnt(Ptc coPtc, float scalar) {
-    strokeWeight((weight+coPtc.weight)*.5*scalar);
-    stroke(#E82C0C, 255);
+    //strokeWeight((weight+coPtc.weight)*.5*scalar);
+    
+    strokeWeight(random(0.001,1));
+    stroke(#ff0000, 255);
     line(pos.x, pos.y, coPtc.pos.x, coPtc.pos.y);
   }
 
@@ -132,7 +136,7 @@ void initSliders(){
   
   slidersList = new ArrayList<Slider>();
   
-  sliderGhost = new Slider(100, 30, 120, 20);
+  sliderGhost = new Slider(200, 30, 120, 20);
   sliderGhost.setTag("Ghost");
   sliderGhost.setValue(32, 6, 255);
   sliderThres = new Slider(100, 55, 120, 20);
@@ -207,7 +211,7 @@ class Slider{
     fill(255, 0, 0);
     rect(pos.x, pos.y, innerW, h);
     
-    fill(255);
+    fill(0,255,0);
     rect(pos.x-10-textWidth(nameTag), pos.y, 10+textWidth(nameTag), h);
     
     fill(0);
@@ -221,7 +225,7 @@ class Slider{
 }
 boolean onPressed;
 
-void mousePressed(){
+void mouseReleased(){
   
   for(int i=0; i<slidersList.size(); i++){
     Slider slider = slidersList.get(i);
@@ -236,7 +240,7 @@ void mousePressed(){
   gBgAlphaT = sliderGhost.value;
 }
 
-void mouseReleased(){
+void mousePressed(){
   
   for(int i=0; i<slidersList.size(); i++){
     Slider slider = slidersList.get(i);
