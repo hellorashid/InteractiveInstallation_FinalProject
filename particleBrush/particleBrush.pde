@@ -101,7 +101,7 @@ class Brush { //Brush Class
   }
 
   void display() {
-    
+
     noStroke();
     fill(c);
     ellipse(xPosition, yPosition, 5, 5);
