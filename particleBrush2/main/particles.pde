@@ -58,7 +58,7 @@ class Ptc {
     vel = new PVector(0, 0);
     acc = new PVector(0, 0);
 
-    weight = random(1, 5);
+    weight = random(2,5);
     decay = map(weight, 1, 5, .95, .85);
     magScalar = map(weight, 1, 10, .5, .05);
   }
@@ -106,7 +106,7 @@ class Ptc {
   }
   
   void drawCnt(Ptc coPtc, float scalar) {
-    //strokeWeight((weight+coPtc.weight)*.5*scalar);
+    strokeWeight((weight+coPtc.weight)*.5*scalar);
     
     strokeWeight(random(0.001,1));
     stroke(#ff0000, 255);

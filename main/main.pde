@@ -75,7 +75,7 @@ void draw(){
       
     
     img.updatePixels();
-    //image(img,0,0, width, height);
+    image(img,0,0, width, height);
     float avgX = sumX / totalPixels;
     float avgY = sumY /totalPixels;
  
@@ -87,7 +87,7 @@ void draw(){
     if (totalPixels > 500) { 
       fill(255, 0, 88);
       ellipse(xPosition, yPosition, 22, 22); 
-      ps.addParticle();
+      //ps.addParticle();
     }; 
     text(avgY, 500,500);
     
