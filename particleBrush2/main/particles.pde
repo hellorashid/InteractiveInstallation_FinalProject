@@ -98,7 +98,7 @@ class Ptc {
 
   void drawPtc() {
     //strokeWeight(weight);
-     strokeWeight(random(3));
+     strokeWeight(1);
      //color for lines
     stroke(#008080,255);
     if(onPressed)line(pos.x, pos.y, pPos.x, pPos.y);
@@ -109,7 +109,7 @@ class Ptc {
     strokeWeight((weight+coPtc.weight)*.5*scalar);
     
     strokeWeight(random(0.001,1));
-    stroke(#ff0000, 255);
+    stroke(#ff0000, random(22));
     line(pos.x, pos.y, coPtc.pos.x, coPtc.pos.y);
   }
 

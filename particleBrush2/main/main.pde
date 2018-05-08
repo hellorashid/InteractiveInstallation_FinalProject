@@ -8,6 +8,7 @@ import org.openkinect.processing.*;
 import gohai.simpletweet.*;
 SimpleTweet simpletweet;
 boolean tweeted; 
+boolean shouldTweet; 
 
 //Colors
 
@@ -17,8 +18,8 @@ color foregroundColor = color(80,33,59);
 
 // Kinect Shit
 Kinect2 kinect2;
-float minThresh = 480;
-float maxThresh = 900; 
+float minThresh = 800;
+float maxThresh = 1200; 
 PImage img; 
 
 
@@ -69,7 +70,7 @@ void setup() {
 // TWIITTER 
 
   simpletweet = new SimpleTweet(this);
-
+  shouldTweet = true;
   /*
    * Create a new Twitter app on https://apps.twitter.com/
    * then go to the tab "Keys and Access Tokens"
@@ -140,9 +141,9 @@ void draw(){
     } else { 
       xPosition = width/2; 
       yPosition = height/2;
-       if (tweeted == false) { 
-        String tweet = simpletweet.tweetImage(get(), "IDM SHOWCASE 2018");
-        println("Posted " + tweet);
+       if (tweeted == false && shouldTweet == true) { 
+          String tweet = simpletweet.tweetImage(get(), "IDM SHOWCASE 2018");
+          println("Posted " + tweet);
        } 
       tweeted = true;
       background(backgroundColor, 200); 

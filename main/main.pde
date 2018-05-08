@@ -9,8 +9,8 @@ color foregroundColor = color(41,33,59);
 
 // Kinect Shit
 Kinect2 kinect2;
-float minThresh = 480;
-float maxThresh = 830; 
+float minThresh = 800;
+float maxThresh = 1200; 
 PImage img; 
 
 float xPosition = 0; 
