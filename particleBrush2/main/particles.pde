@@ -20,7 +20,7 @@ void updatePtcs() {
   if (onPressed) {
     for (int i=0; i<ptcs.length; i++) {
       // X & Y POSITION INSTEAD OF MOUSE POSTIONS: 
-      ptcs[i].update(xPosition, yPosition);
+      ptcs[i].update(mouseX, mouseY);
     }
   } else {
     for (int i=0; i<ptcs.length; i++) {
@@ -250,4 +250,5 @@ void mousePressed(){
   onPressed = false;
   gThresT = 0;
   gBgAlphaT = 255;
+  inFrame = true;
 }

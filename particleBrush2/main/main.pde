@@ -174,6 +174,7 @@ void draw(){
     println(inFrame);
     
  }
+
  
 boolean pictureTaken = false; 
  void takePic() { 
@@ -182,6 +183,8 @@ boolean pictureTaken = false;
    saveFrame(); 
      pictureTaken = true; 
    } 
+   
+  
    
  };  
  
