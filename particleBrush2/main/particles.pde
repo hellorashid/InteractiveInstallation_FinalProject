@@ -7,7 +7,8 @@
 
 Ptc [] ptcs;
 
-float gMag = 1, gVelMax = 10, gThres, gThresT, gBgAlpha = 255, gBgAlphaT = 255;
+float gMag = 1, gVelMax = 6, gThres, gThresT, gBgAlpha = 255, gBgAlphaT = 255;
+float time;
 
 void initPtcs(int amt) {
   ptcs = new Ptc[amt];
@@ -30,6 +31,7 @@ void updatePtcs() {
 }
 
 void drawPtcs() {
+  
   for (int i=0; i<ptcs.length; i++) {
     ptcs[i].drawPtc();
   }
@@ -98,18 +100,26 @@ class Ptc {
 
   void drawPtc() {
     //strokeWeight(weight);
+    time =( millis()/1000);
      strokeWeight(1);
      //color for lines
+    
+   // stroke(0xff000000 | int(random(0xffffff)));
+   
     stroke(#008080,255);
+    //if (time > 10){
+    //  stroke(255);
+    //}
+    
     if(onPressed)line(pos.x, pos.y, pPos.x, pPos.y);
     else point(pos.x, pos.y);
   }
   
   void drawCnt(Ptc coPtc, float scalar) {
-    strokeWeight((weight+coPtc.weight)*.5*scalar);
-    
-    strokeWeight(random(0.001,1));
-    stroke(#ff0000, random(22));
+    strokeWeight((weight+coPtc.weight)*.1*scalar);
+    //color of webs
+    strokeWeight(random(0.000000001,0.01));
+    stroke(#ff0000,255);
     line(pos.x, pos.y, coPtc.pos.x, coPtc.pos.y);
   }
 

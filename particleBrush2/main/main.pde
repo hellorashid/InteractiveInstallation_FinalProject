@@ -16,6 +16,7 @@ color backgroundColor = color(#72B9FF);
 color foregroundColor = color(80,33,59);
 
 
+
 // Kinect Shit
 Kinect2 kinect2;
 float minThresh = 800;
@@ -29,12 +30,12 @@ float yPosition = 0;
 
 int particleSize = 32;
 boolean inFrame; 
-
+int particleCounter = 60; //Creates new particle every 2 seconds
 PImage crosshair; 
 
 
 void setup() {
-  frameRate = 60;
+  frameRate = 30;
   fullScreen();
   //size(800, 600);
   kinect2 = new Kinect2(this);
@@ -45,14 +46,13 @@ void setup() {
   img = createImage(kinect2.depthWidth, kinect2.depthHeight,HSB);
 
   
-  background(222);
+  background(0);
   frameRate(60);
   textSize(15);
   inFrame = false;
   tweeted = false;
   
-  initPtcs(60);
-  initSliders();
+  initPtcs(5);   initSliders();
   
   
  //crosshair = createGraphics(width, height); 
@@ -70,7 +70,7 @@ void setup() {
 // TWIITTER 
 
   simpletweet = new SimpleTweet(this);
-  shouldTweet = true;
+  shouldTweet = false;
   /*
    * Create a new Twitter app on https://apps.twitter.com/
    * then go to the tab "Keys and Access Tokens"
@@ -89,7 +89,7 @@ void draw(){
   
   
   //println(frameRate);
-  //background(#7F0037);
+  //background(0, 0.01);
   //background(255); 
   onPressed = true;
 
@@ -111,10 +111,7 @@ void draw(){
         sumX += x;
         sumY += y;
         totalPixels ++;
-        
         particleSize = d / 20;
-       
-        
     } else {
       //background color
       img.pixels[offset] = backgroundColor;
@@ -146,13 +143,22 @@ void draw(){
           println("Posted " + tweet);
        } 
       tweeted = true;
-      background(backgroundColor, 200); 
+      background(backgroundColor, 10); 
     } 
 
     gThres = lerp(gThres, gThresT, 0.001);
     //gBgAlpha = lerp(gBgAlpha, gBgAlphaT, .02);
     //gBgAlpha = 1; 
     gMag = sliderForce.value;
+    
+    
+    if (particleCounter > 0) { 
+      initPtcs(1); 
+      particleCounter = particleCounter - 1;
+    } else { 
+      particleCounter = 60;
+    } 
+      
     
     updatePtcs();
     updateSliders();
