@@ -7,7 +7,7 @@
 
 Ptc [] ptcs;
 
-float gMag = 1, gVelMax = 6, gThres, gThresT, gBgAlpha = 255, gBgAlphaT = 255;
+float gMag = 0, gVelMax = 6, gThres, gThresT, gBgAlpha = 255, gBgAlphaT = 255;
 float time;
 
 color webColor = color(255, 0, 0);
@@ -104,7 +104,7 @@ class Ptc {
     //strokeWeight(weight);
     time =( millis()/1000);
      strokeWeight(1);
-     //color for lines
+    //color for lines
     
    // stroke(0xff000000 | int(random(0xffffff)));
    

@@ -181,14 +181,19 @@ void draw(){
       //println(joints[KinectPV2.JointType_HandRight].getX());
       handX = joints[KinectPV2.JointType_HandRight].getX(); 
       handY = joints[KinectPV2.JointType_HandRight].getY();       
-      inFrame = true;
+      //inFrame = true;
       
       leftHandX = joints[KinectPV2.JointType_HandLeft].getX(); 
-      leftHandY = joints[KinectPV2.JointType_HandLeft].getY();       
-
+      leftHandY = joints[KinectPV2.JointType_HandLeft].getY();   
       
-    }
+    } 
   }
+  
+  if ( 5 < handX && handX < 500) { 
+    inFrame = true;
+  } else { 
+    inFrame = false;
+  } 
    
   webColor = color(255, ((leftHandX / width) * 255), ((leftHandY / width) * 255)); 
   
@@ -246,7 +251,7 @@ void draw(){
     //  //saveFrame();
     //  takePic(); 
     //}; 
-    println(frameRate);
+    println(handX);
     //println(webColor);
  } /// END DRAW 
 
