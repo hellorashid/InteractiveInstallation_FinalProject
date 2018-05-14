@@ -10,6 +10,8 @@ Ptc [] ptcs;
 float gMag = 1, gVelMax = 6, gThres, gThresT, gBgAlpha = 255, gBgAlphaT = 255;
 float time;
 
+color webColor = color(255, 0, 0);
+
 void initPtcs(int amt) {
   ptcs = new Ptc[amt];
   for (int i=0; i<ptcs.length; i++) {
@@ -21,7 +23,7 @@ void updatePtcs() {
   if (onPressed) {
     for (int i=0; i<ptcs.length; i++) {
       // X & Y POSITION INSTEAD OF MOUSE POSTIONS: 
-      ptcs[i].update(mouseX, mouseY);
+      ptcs[i].update(xPosition, yPosition);
     }
   } else {
     for (int i=0; i<ptcs.length; i++) {
@@ -119,7 +121,7 @@ class Ptc {
     strokeWeight((weight+coPtc.weight)*.1*scalar);
     //color of webs
     strokeWeight(random(0.000000001,0.01));
-    stroke(#ff0000,255);
+    stroke(webColor,random(10,200));
     line(pos.x, pos.y, coPtc.pos.x, coPtc.pos.y);
   }
 
