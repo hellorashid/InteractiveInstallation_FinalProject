@@ -1,5 +1,6 @@
 
-
+import processing.sound.*;
+SoundFile file;
 
 
 // ------- TWITTER ------------------ // 
@@ -87,7 +88,7 @@ void setup() {
 // -------  TWITTER  ------------------ // 
 
   simpletweet = new SimpleTweet(this);
-  shouldTweet = false;
+  shouldTweet = true;
   /*
    * Create a new Twitter app on https://apps.twitter.com/
    * then go to the tab "Keys and Access Tokens"
@@ -102,6 +103,9 @@ void setup() {
   
   
   // -------  PARTICLES  ------------------ // 
+  
+  file = new SoundFile(this, "music.mp3");
+  file.loop();
 
   initPtcs(30); 
   initSliders();
@@ -251,8 +255,12 @@ void draw(){
     //  //saveFrame();
     //  takePic(); 
     //}; 
-    println(handX);
+    file.amp(handY/height * -1);
+    println(handX/width);
     //println(webColor);
+    
+    
+     
  } /// END DRAW 
 
  
