@@ -24,16 +24,13 @@ void setup() {
   kinect2 = new Kinect2(this);
   background(0);
   
-  
-  
   kinect2.initDepth();
   kinect2.initDevice();
   img = createImage(kinect2.depthWidth, kinect2.depthHeight,HSB);
 
   ps = new ParticleSystem(new PVector(width/2, 100));
 
- 
-  
+
   
 }
 
@@ -49,9 +46,6 @@ void draw(){
   float sumY = 0;
   float totalPixels = 0;
 
-
-  
-  
   for (int x =0; x< kinect2.depthWidth; x++){
     for (int y =0; y<kinect2.depthHeight; y++){
       int offset = x + y * kinect2.depthWidth;
