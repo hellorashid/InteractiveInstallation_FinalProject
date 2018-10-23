@@ -1,2 +1,3 @@
-# InteractiveInstallation_FinalProject
-Final Project - Interactive Installations
+# CANVAS - An Interactive Art Installation
+
+
